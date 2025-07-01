@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+
+:root {
+  --mainPink: #ef7998;
+  --mainYellow: rgb(249, 228, 148);
+  --mainWhite: #fff;
+  --mainBlack: #000;
+  --yellowTrans: rgba(249, 228, 148, 0.5);
+  --mainGrey: rgb(238, 238, 238);
+}
+
+body {
+  font-family: "Kaushan Script", cursive;
+  background: var(--mainWhite);
+  color: var(--mainBlack);
+  padding-top: 70px; /* Add padding to the top of the body, equal to navbar's height */
+}
+/* nav links */
+.navbar {
+  position: fixed; /* Changed from sticky to fixed */
+  top: 0;
+  left: 0; /* Anchor to the left edge */
+  right: 0; /* Anchor to the right edge */
+  width: 100%; /* Ensure it spans full width */
+  z-index: 1020; /* Bootstrap's default navbar z-index is 1030, this should be below or equal */
+  background: var(--mainWhite);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for sticky effect */
+  min-height: 70px; /* Ensure a consistent height */
+}
+.navbar-toggler {
+  outline: none !important;
+}
+.toggler-icon {
+  font-size: 2.5rem;
+  color: var(--mainPink);
+}
+.nav-link {
+  color: var(--mainPink);
+  font-size: 1.5rem;
+  transition: all 0.5s ease-in-out;
+  margin: 0 10px; /* Add some horizontal margin for spacing */
+  padding: 0; /* Remove default padding to make it more compact if needed */
+}
+.nav-link:hover {
+  color: var(--mainBlack);
+}
+
+.navbar-nav {
+  justify-content: center; /* Ensures content is centered */
+  flex-grow: 1; /* Allows it to take available space for centering */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+.nav-item {
+    margin: 0; /* Remove default nav-item margins */
+    padding: 0;
+}
+
+.nav-info-items {
+  margin-left: auto; /* Pushes content to the right */
+  display: flex; /* Ensure login button is aligned properly */
+  align-items: center;
+  padding-left: 20px; /* Add some padding if links get too close */
+}
+
+/* Ensure login icon visibility and color */
+.nav-info-items .nav-link .fas {
+  color: var(--mainPink); /* Explicitly set color */
+  font-size: 1.5rem; /* Explicitly set size */
+  vertical-align: middle; /* Align with text */
+}
+
+/* end of nav links */
+
+/* banner */
+.max-height {
+  min-height: calc(100vh - 76px);
+  background: linear-gradient(var(--yellowTrans), var(--yellowTrans)),
+    url("../img/headerBcg.jpeg") center/cover fixed no-repeat;
+  position: relative;
+}
+.banner {
+  color: var(--mainWhite);
+  margin-top: -4rem;
+}
+.banner-title {
+  color: var(--mainPink);
+  font-size: 4rem;
+}
+.banner-link {
+  font-size: 1.5rem;
+  color: var(--mainBlack);
+  border: 0.2rem solid var(--mainBlack);
+}
+.banner-link:hover {
+  background: var(--mainBlack);
+  color: var(--mainPink);
+}
+/* endo of banner */
+
+/* popup cart  */
+.popup-cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0; /* Initially hidden */
+  overflow: hidden; /* Hide overflow until visible */
+  transition: width 0.3s ease-in-out; /* Smooth slide animation for width */
+  background: rgba(255, 255, 255, 0.95); /* Slightly less transparent */
+  height: 100vh; /* Take full viewport height, padding will control content area */
+  z-index: 1030; /* Higher than navbar, lower than floating button */
+  padding: 0;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Shadow to make it pop */
+  display: flex; /* Use flexbox for internal layout */
+  flex-direction: column;
+  /* Adjust padding-bottom to create space for floating button */
+  padding-bottom: 80px; /* Increased padding to move content up */
+}
+
+.show-popup-cart {
+  width: 20rem; /* Visible width, adjusted slightly */
+  /* Padding is applied when visible. Ensure enough space at the bottom */
+  padding: 1.5rem; /* Default padding for top, right, left */
+  padding-bottom: calc(1.5rem + 60px + 20px); /* Adjust padding-bottom: base padding + floating button height + its bottom margin */
+}
+
+.cart-items {
+  flex-grow: 1; /* Take up available space */
+  overflow-y: auto; /* Enable scrolling for many items */
+}
+
+.cart-item {
+  transition: all 0.3s ease-in-out; /* Smoother transition */
+  border-bottom: 1px dashed var(--mainGrey); /* Separator for items */
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+/* end of popup cart */
+/* cart item details */
+.cart-item-remove {
+  color: var(--mainPink);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.cart-item-remove:hover {
+  transform: scale(1.1);
+  color: var(--mainBlack);
+}
+#cart-item-price {
+  font-size: 0.9rem;
+  color: var(--mainYellow); /* Price color */
+}
+.cart-item #item-img {
+  width: 60px; /* Slightly larger image */
+  height: 60px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.cart-item .item-text {
+    flex-grow: 1;
+}
+
+/* cart buttons */
+.cart-total-container {
+  border-top: 2px solid var(--mainPink); /* Stronger separator */
+  padding-top: 20px;
+  margin-top: 20px !important; /* Ensure margin is applied */
+}
+.cart-buttons-container {
+    padding-bottom: 10px; /* Reduced padding to make it more compact */
+    margin-bottom: 50px; /* This was added by the user in the previous turn */
+}
+
+.btn-pink {
+  color: var(--mainPink) !important;
+  border-color: var(--mainPink) !important;
+}
+.btn-black {
+  color: var(--mainBlack) !important;
+  border-color: var(--mainBlack) !important;
+}
+.btn-black:hover {
+  color: var(--mainPink) !important;
+  background: var(--mainBlack) !important;
+}
+.btn-pink:hover {
+  background: var(--mainPink) !important;
+  color: var(--mainBlack) !important;
+}
+/* end of cart buttons */
+
+/* about */
+.about-img__container {
+  position: relative;
+}
+
+.about-img__container::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: -1.7rem;
+  width: 100%;
+  height: 100%;
+  outline: 0.5rem solid var(--mainYellow);
+  z-index: -1;
+  transition: all 1s ease-in-out;
+}
+.about-img__container:hover:before {
+  top: 0;
+  left: 0;
+}
+/*end of  about */
+
+/* store items */
+.store {
+  background: var(--mainGrey);
+}
+.img-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.store-img {
+  transition: all 0.5s ease-in-out; /* Smoother zoom */
+}
+.img-container:hover .store-img {
+  transform: scale(1.1); /* Slightly less aggressive zoom */
+}
+.store-item-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.75rem;
+  background: var(--mainYellow);
+  border-top-left-radius: 1rem;
+  transition: all 0.3s ease-in-out; /* Smoother slide in */
+  transform: translate(100%, 100%); /* Start off-screen */
+  font-size: 1.5rem;
+}
+.img-container:hover .store-item-icon {
+  transform: translate(0, 0); /* Slide into view */
+}
+.store-item-icon:hover {
+  color: var(--mainWhite);
+  background: var(--mainPink); /* Change color on hover */
+}
+.store-item-value {
+  color: var(--mainYellow);
+}
+/*end of  store items */
+.search-box {
+  background: var(--mainPink);
+  color: var(--mainBlack);
+  border: none; /* Remove border */
+}
+.form-control {
+    border-color: var(--mainPink); /* Consistent border color */
+}
+
+/* ligthbox (assuming this is not in use or will be removed) */
+.lightbox-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6) !important;
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.lightbox-holder {
+  position: relative;
+}
+.lightbox-item {
+  min-height: 80vh;
+  background: url("../img/cake-1.jpeg") center/cover fixed no-repeat;
+  border-radius: 0.3rem;
+}
+.lightbox-close {
+  color: var(--mainPink);
+  font-size: 3rem;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+.lightbox-close:hover {
+  color: var(--mainYellow);
+}
+
+.lightbox-control {
+  position: absolute;
+  font-size: 4rem;
+  color: var(--mainPink);
+  transition: all 1s linear;
+  cursor: pointer;
+}
+.lightbox-control:hover {
+  color: var(--mainYellow);
+}
+.btnLeft {
+  top: 50%;
+  left: 0;
+  transform: translateX(-60%);
+}
+.btnRight {
+  top: 50%;
+  right: 0;
+  transform: translateX(60%);
+}
+
+/* Floating cart button */
+.floating-cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--mainPink);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+  cursor: pointer;
+  z-index: 1050; /* Ensure it's always visible and clickable, higher than popup-cart */
+  transition: all 0.3s ease-in-out;
+}
+.floating-cart-button:hover {
+    transform: scale(1.1); /* Slight hover effect */
+}
+.floating-cart-button i {
+  color: var(--mainWhite);
+  font-size: 1.8rem;
+}
+
+/* Contact Section */
+.contact {
+  padding: 50px 0;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--mainPink);
+}
+
+.contact-info p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.contact-info i {
+  margin-right: 10px;
+  color: var(--mainPink);
+  display: inline-block; /* Ensure icons are rendered */
+  font-size: 1.5rem; /* Set a clear size for icons */
+  vertical-align: middle; /* Align with text */
+}
+
+.contact-form .form-control,
+.contact-form textarea {
+  margin-bottom: 20px;
+  border-color: var(--mainPink); /* Consistent input border */
+}
+
+.contact-form button {
+  background-color: var(--mainPink);
+  color: var(--mainWhite);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--mainBlack);
+}
+
+.cart-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
